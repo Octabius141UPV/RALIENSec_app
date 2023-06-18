@@ -1,9 +1,11 @@
+// ignore_for_file: unused_import
+
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class RegisterPage extends StatelessWidget {
-  RegisterPage({super.key});
+  const RegisterPage({super.key});
 
   //frontend
   @override

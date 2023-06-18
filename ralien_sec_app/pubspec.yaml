@@ -30,6 +30,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  http: ^1.0.0
+  convert: ^3.0.0
+  nfc_manager: ^3.2.0
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -39,7 +42,6 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml` file located at the root of your
@@ -59,10 +61,11 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
-
+  assets:
+      - assets/images/bes_security_logo.png
+      - assets/images/apple-logo-1-1-873250453.png
+      - assets/images/Logoblanco.png
+      - assets/images/google-logo-icon-PNG-Transparent-Background-2048x2048-232852337.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

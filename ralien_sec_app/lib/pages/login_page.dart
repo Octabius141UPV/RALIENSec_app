@@ -1,9 +1,11 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
-import 'package:iris_project/components/my_button.dart';
-import 'package:iris_project/components/my_textfield.dart';
+import 'package:ralien_sec_app/components/my_button.dart';
+import 'package:ralien_sec_app/components/my_textfield.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'package:iris_project/components/square.tile.dart';
+import 'package:ralien_sec_app/components/square.tile.dart';
 
 class LoginPage extends StatelessWidget {
   LoginPage({super.key});
