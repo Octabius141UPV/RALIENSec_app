@@ -2,9 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:ralien_sec_app/components/my_button.dart';
-import 'package:ralien_sec_app/components/my_textfield.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
+import 'package:ralien_sec_app/components/myTextField.dart';
 import 'package:ralien_sec_app/components/square.tile.dart';
 
 class LoginPage extends StatelessWidget {
@@ -18,40 +16,12 @@ class LoginPage extends StatelessWidget {
   void singUserIn() {}
   //Test de request a la API
 
-  void postData() async {
-    // Crea el diccionario de encabezados
-    Map<String, String> encabezados = {
-      'Content-Type': 'application/json', // Ejemplo de un encabezado
-    };
-
-    // Crea el cuerpo de la solicitud
-    var cuerpo = {
-      'identificador': "21",
-      'puerta': "15",
-    };
-    // Convierte el cuerpo a formato JSON
-    var cuerpoJson = jsonEncode(cuerpo);
-
-    var url = Uri.parse('https://concise-base-387414.oa.r.appspot.com/check');
-
-    //Solicitud GET
-    var response = await http.post(url, headers: encabezados, body: cuerpoJson);
-
-    //Verifica el estado de la solicitud
-    if (response.statusCode == 201) {
-      //Solicitud exitosa
-      var responseData = jsonDecode(response.body);
-      print(responseData);
-    } else {
-      //Solicitud fallida
-      print('Error: ${response.statusCode}');
-    }
-  }
+  //Verifica el estado de la solicitud
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[300],
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Center(
@@ -62,7 +32,7 @@ class LoginPage extends StatelessWidget {
                 //Logo
                 Image.asset(
                   'assets/images/bes_security_logo.png',
-                  height: 200,
+                  height: 150,
                 ),
 
                 const SizedBox(height: 30),
@@ -78,6 +48,7 @@ class LoginPage extends StatelessWidget {
                 const SizedBox(height: 25),
 
                 //Username
+
                 MyTextField(
                   controller: usernameController,
                   hintText: 'Username',
@@ -113,7 +84,7 @@ class LoginPage extends StatelessWidget {
                 ),
                 MyButton(onTap: singUserIn),
 
-                const SizedBox(height: 50),
+                const SizedBox(height: 25),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: Row(
@@ -146,16 +117,12 @@ class LoginPage extends StatelessWidget {
                   children: [
                     //google button
                     SquareTile(
-                      imagePath: 'assets/images/apple-logo-1-1-873250453.png',
-                    ),
-                    SizedBox(width: 20),
-                    SquareTile(
                       imagePath:
                           'assets/images/google-logo-icon-PNG-Transparent-Background-2048x2048-232852337.png',
                     ),
                   ],
                 ),
-                const SizedBox(height: 50),
+                const SizedBox(height: 30),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

@@ -30,9 +30,17 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  http: ^1.0.0
-  convert: ^3.0.0
+  http: ^1.1.0
   nfc_manager: ^3.2.0
+  shared_preferences: ^2.1.2
+  flutter_animate: ^4.2.0
+  flutter_staggered_grid_view: ^0.6.2
+  google_fonts: ^5.1.0
+  provider: ^6.0.5
+  smooth_page_indicator: ^1.1.0
+
+
+  
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -62,10 +70,7 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-      - assets/images/bes_security_logo.png
-      - assets/images/apple-logo-1-1-873250453.png
-      - assets/images/Logoblanco.png
-      - assets/images/google-logo-icon-PNG-Transparent-Background-2048x2048-232852337.png
+      - assets/images/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
@@ -77,8 +82,7 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
+  
   #     fonts:
   #       - asset: fonts/Schyler-Regular.ttf
   #       - asset: fonts/Schyler-Italic.ttf
