@@ -10,20 +10,6 @@ import 'package:ralien_sec_app/main.dart';
 class HomePage extends StatefulWidget {
   HomePage({super.key});
 
-  String token = "447a7a93-70ce-4ed4-bd36-dbf063950953";
-
-  void _callToAPI() async {
-    final response = await http.get(
-        Uri.parse(getApiUrl() + "api/first_view_opening_app/?token=$token"));
-
-    if (response.statusCode == 200) {
-      final Map<String, dynamic> data = json.decode(response.body);
-      if (data.containsKey("success")) {
-        Map<String, dynamic> jsonHouses = data["houses"];
-      }
-    }
-  }
-
   @override
   State<HomePage> createState() => _HomePageState();
 }
