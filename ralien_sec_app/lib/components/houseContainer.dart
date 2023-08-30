@@ -1,24 +1,23 @@
-/* import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-
+import 'package:ralien_sec_app/main.dart' as main;
 
 class HouseContainer {
-  static List<Widget> imgOwnersList = [];
-
-  
-
   static List<Animate> crearContainer(
       BuildContext context, List<dynamic> houses) {
     List<Animate> contendores = [];
 
     for (int i = 0; i < houses.length; i++) {
-     
-      
-    for (int j = 0; j < houses[i]["userprofiles"].length; j++) {
-      /* jsonHouses[i]["userprofiles"][j]["profile_image"] */
-      imgOwnersList.add(houses[i]["userprofiles"][j]["profile_image"]);
-    }
-  
+      List<String> imgOwnersString = [];
+      List<Widget> imgOwnersList = [];
+      for (int j = 0; j < houses[i]["userprofiles"].length; j++) {
+        /* jsonHouses[i]["userprofiles"][j]["profile_image"] */
+        imgOwnersString.add(houses[i]["userprofiles"][j]["profile_image"]);
+      }
+      for (int l = 0; imgOwnersString.length > l; l++) {
+        imgOwnersList.add(Text(imgOwnersString[l]));
+      }
+
       contendores.add(
         Animate(
           effects: [
@@ -61,8 +60,8 @@ class HouseContainer {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadiusDirectional.circular(12),
                       image: DecorationImage(
-                        image: AssetImage(
-                            ''), //Hacer un get de la imagen o bien de la base de datos, o bien del local
+                        image: NetworkImage(houses[i][
+                            "photo"]), //Hacer un get de la imagen o bien de la base de datos, o bien del local
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -102,4 +101,3 @@ class HouseContainer {
     return contendores;
   }
 }
- */

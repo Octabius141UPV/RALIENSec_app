@@ -19,11 +19,31 @@ String getApiUrl() {
   return apiUrl;
 }
 
-void main() async {
-  await _MyAppState.callToAPI();
+List<String> jsonHouses = [];
 
-  List<dynamic> houses = _MyAppState.getJsonHouses();
-  List<String> imgOwners = [];
+Future<void> callToAPI() async {
+  final response = await http
+      .get(Uri.parse(getApiUrl() + "api/first_view_opening_app/?token=$token"));
+
+  if (response.statusCode == 200) {
+    final Map<String, dynamic> data = json.decode(response.body);
+    if (data.containsKey("success")) {
+      jsonHouses = data["houses"];
+    } else {
+      print(data["error"]);
+    }
+  } else {
+    print("Error");
+  }
+}
+
+List<String> getJsonHouses() {
+  return jsonHouses;
+}
+
+void main() async {
+  /* List<String> imgOwners = [];
+  
 
   //Extraer imagenes de los usuarios de una casa
 
@@ -33,8 +53,12 @@ void main() async {
       imgOwners.add(houses[i]["userprofiles"][j]["profile_image"]);
     }
   }
-  print(imgOwners);
 
+  for (int i = 0; imgOwners.length > i; i++) {
+    imgOwnersList.add(Text(imgOwners[i]));
+  }
+
+  print(imgOwnersList); */
   /* runApp(MyApp()); */
 }
 
@@ -46,28 +70,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  static List<dynamic> jsonHouses = [];
-
   bool isNewUser = false;
-  static Future<void> callToAPI() async {
-    final response = await http.get(
-        Uri.parse(getApiUrl() + "api/first_view_opening_app/?token=$token"));
-
-    if (response.statusCode == 200) {
-      final Map<String, dynamic> data = json.decode(response.body);
-      if (data.containsKey("success")) {
-        jsonHouses = data["houses"];
-      } else {
-        print(data["error"]);
-      }
-    } else {
-      print("Error");
-    }
-  }
-
-  static List<dynamic> getJsonHouses() {
-    return jsonHouses;
-  }
 
   @override
   void initState() {
