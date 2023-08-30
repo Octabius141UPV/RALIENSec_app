@@ -1,6 +1,6 @@
-# ralien_sec_app
+# RALIEN Securities APP
 
-A new Flutter project.
+The app for our RALIEN Securities company
 
 ## Getting Started
 
