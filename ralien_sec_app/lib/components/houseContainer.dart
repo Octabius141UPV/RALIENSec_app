@@ -1,7 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'dart:io';
+
+import 'package:http/http.dart' as http;
+
+
+
+
 
 class HouseContainer {
+  static checkFileExistence(String filePath, Function(bool) callback) {
+  final file = File(filePath);
+
+  file.exists().then((exists) {
+    callback(exists);
+  });
+}
+  static saveImage(String url, int id, String imageId) async {
+    var response = await http.get(Uri.parse(url));
+    var filePath = "pers_assets/img/$id" + "_" + "$imageId";
+
+    File file = File(filePath);
+    await file.writeAsBytes(response.bodyBytes);
+  }
+  
+
+
+
   static List<Animate> crearContainer(
       BuildContext context, List<dynamic> houses) {
     List<Animate> contendores = [];
@@ -10,9 +35,35 @@ class HouseContainer {
       List<String> imgOwnersString = [];
       List<Widget> imgOwnersList = [];
       for (int j = 0; j < houses[i]["userprofiles"].length; j++) {
+          String stringWithName = "${houses[i]["userprofiles"][j]["id"]}_${houses[i]["userprofiles"][j]["image_id"]}";
+          String filePath = "pers_assets/img/$stringWithName";
+          checkFileExistence(filePath, (bool fileExists) {
+          print("filepath: $filePath");
+          if (fileExists) {
+            imgOwnersString.add(filePath);
+            print("file exists");
+          } else {
+            imgOwnersString.add(houses[i]["userprofiles"][j]["profile_image"]);
+            saveImage(houses[i]["userprofiles"][j]["profile_image"], houses[i]["userprofiles"][j]["id"], houses[i]["userprofiles"][j]["image_id"]);
+            print("file does not exist");
+          }
+          
+
+
+           
+
+
+            
+            //Q: save the image to the local storage
+            
+            
+
+          }
         /* jsonHouses[i]["userprofiles"][j]["profile_image"] */
-        imgOwnersString.add(houses[i]["userprofiles"][j]["profile_image"]);
-      }
+               // id_userprofile_profile_image
+        
+        
+        );      }
       for (int l = 0; imgOwnersString.length > l; l++) {
         imgOwnersList.add(
           Text(imgOwnersString[l]),

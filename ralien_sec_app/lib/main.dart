@@ -11,7 +11,24 @@ import "package:ralien_sec_app/components/houseContainer.dart";
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-String token = "e981f9c3-8341-4a24-a3dc-a5665cd19bca";
+
+/* def getToken
+
+final tokenResponse = await http.get(Uri.parse(getApiUrl() + "api/loginUserApi/?username=username&password=password"));
+if (tokenResponse.statusCode == 200) {
+    final Map<String, dynamic> tokenDict = json.decode(tokenResponse.body);
+    if (tokenDict.containsKey("success")) {
+      token = data["token"];
+      print(token)
+    } else {
+      print(data["error"]);
+    }
+  } else {
+    print("Error");
+  } */
+
+final String token = "bf65a240-89b0-4a2e-9fb6-093f4780ab4f";
+
 
 const String apiUrl = "https://ralien-django-backend-2phw75janq-no.a.run.app/";
 
