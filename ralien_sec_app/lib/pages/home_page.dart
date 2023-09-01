@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:http/http.dart' as http;
-import "dart:convert";
 
 import 'package:ralien_sec_app/components/houseContainer.dart';
 import 'package:ralien_sec_app/main.dart';
@@ -48,7 +45,6 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Color(0xFFF1F5F8),
         body: SingleChildScrollView(
           controller: scrollController,
-          physics: const NeverScrollableScrollPhysics(),
           child: Column(
             mainAxisSize: MainAxisSize.max,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -165,7 +161,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                          const EdgeInsetsDirectional.fromSTEB(0, 20, 0, 40),
                       child: Container(
                         width: double.infinity,
                         height: MediaQuery.sizeOf(context).height * 0.75,
@@ -187,92 +183,21 @@ class _HomePageState extends State<HomePage> {
                         ),
                         child: Padding(
                           padding: EdgeInsets.fromLTRB(0, 8, 0, 0),
-                          child: DefaultTabController(
-                            length: 2,
-                            initialIndex: 0,
-                            child: Column(
-                              children: [
-                                const Align(
-                                  alignment: AlignmentDirectional(0, 0),
-                                  child: TabBar(
-                                    isScrollable: false,
-                                    labelColor: Color(0xFF3D235E),
-                                    labelStyle: TextStyle(
-                                      fontFamily: "REM",
-                                      color: Color(0xFF3D235E),
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                    unselectedLabelColor: Color(0xFF7C8B94),
-                                    unselectedLabelStyle: TextStyle(
-                                      fontFamily: "REM",
-                                      color: Color(0xFF7C8B94),
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                    indicatorColor: Color(0xFF3D235E),
-                                    indicatorWeight: 2,
-                                    indicatorSize: TabBarIndicatorSize.label,
-                                    tabs: [
-                                      Tab(
-                                        text: "Casas principales",
-                                      ),
-                                      Tab(
-                                        text: "Casas de alquiler",
-                                      ),
-                                    ],
-                                  ),
+                          child: Padding(
+                            padding: EdgeInsets.fromLTRB(0, 15, 0, 0),
+                            child: Container(
+                              width: double.infinity,
+                              height: 797,
+                              decoration: const BoxDecoration(
+                                color: Colors.white,
+                              ),
+                              alignment: const AlignmentDirectional(0, -1),
+                              child: SingleChildScrollView(
+                                child: Column(
+                                  children: HouseContainer.crearContainer(
+                                      context, getJsonHouses()),
                                 ),
-                                Expanded(
-                                  child: TabBarView(
-                                    children: [
-                                      Padding(
-                                        padding:
-                                            EdgeInsets.fromLTRB(0, 15, 0, 0),
-                                        child: Container(
-                                            width: double.infinity,
-                                            height: 797,
-                                            decoration: const BoxDecoration(
-                                              color: Colors.white,
-                                            ),
-                                            alignment:
-                                                const AlignmentDirectional(
-                                                    0, -1),
-                                            child: ListView(
-                                              padding: EdgeInsets.zero,
-                                              primary: false,
-                                              scrollDirection: Axis.vertical,
-                                              children: [
-                                                Padding(
-                                                  padding: EdgeInsets.fromLTRB(
-                                                      16, 12, 12, 12),
-                                                  child: Container(
-                                                      width: 230,
-                                                      height: 283,
-                                                      decoration: BoxDecoration(
-                                                        color: Colors.white,
-                                                        boxShadow: [
-                                                          BoxShadow(
-                                                            color: Color(
-                                                                0x34090F13),
-                                                            blurRadius: 4,
-                                                            offset:
-                                                                Offset(0, 2),
-                                                          ),
-                                                        ],
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(12),
-                                                      ),
-                                                      child: Column()),
-                                                )
-                                              ],
-                                            )),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              ],
+                              ),
                             ),
                           ),
                         ),

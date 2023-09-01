@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:ralien_sec_app/main.dart' as main;
 
 class HouseContainer {
   static List<Animate> crearContainer(
@@ -15,8 +14,12 @@ class HouseContainer {
         imgOwnersString.add(houses[i]["userprofiles"][j]["profile_image"]);
       }
       for (int l = 0; imgOwnersString.length > l; l++) {
-        imgOwnersList.add(Text(imgOwnersString[l]));
+        imgOwnersList.add(
+          Text(imgOwnersString[l]),
+        );
       }
+
+      int numOwners = houses[i]["userprofiles"].length;
 
       contendores.add(
         Animate(
@@ -56,8 +59,8 @@ class HouseContainer {
                   Container(
                     width: double.infinity,
                     height: MediaQuery.of(context).size.height * 0.21,
-                    color: Colors.white,
                     decoration: BoxDecoration(
+                      color: Colors.white,
                       borderRadius: BorderRadiusDirectional.circular(12),
                       image: DecorationImage(
                         image: NetworkImage(houses[i][
@@ -74,23 +77,95 @@ class HouseContainer {
                       children: [
                         Container(
                           width: 150,
+                          height: 28,
                           child: Stack(
-                            alignment: AlignmentDirectional(-1, 0),
-                            children: [
+                            alignment: const AlignmentDirectional(-1, 0),
+                            clipBehavior: Clip.none,
+                            children: <Widget>[
                               ListView.builder(
-                                scrollDirection: Axis.horizontal,
-                                physics: NeverScrollableScrollPhysics(),
+                                // Maxheight: MediaQuery.of(context).size.height * ,
+                                primary: true,
+                                scrollDirection: Axis.vertical,
                                 itemCount: imgOwnersList.length,
                                 itemBuilder: (BuildContext context, int index) {
-                                  return imgOwnersList[index];
+                                  return Container(
+                                    width: 28,
+                                    height: 28,
+                                    clipBehavior: Clip.antiAlias,
+                                    decoration: const BoxDecoration(
+                                      shape: BoxShape.circle,
+                                    ),
+                                    child: Image.network(imgOwnersString[index],
+                                        fit: BoxFit.fitWidth),
+                                  );
                                 },
                               )
                             ],
                           ),
-                        )
+                        ),
+                        Padding(
+                          padding:
+                              const EdgeInsetsDirectional.fromSTEB(0, 0, 8, 0),
+                          child: Text(
+                            houses[i]["name"].toString(),
+                            style: const TextStyle(
+                              fontFamily: 'REM',
+                              fontSize: 16,
+                              color: Colors.black,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ),
                       ],
                     ),
-                  )
+                  ),
+                  Align(
+                    alignment: const AlignmentDirectional(0, 0),
+                    child: Padding(
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(12, 0, 12, 0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Align(
+                            alignment: const AlignmentDirectional(-1, 0),
+                            child: Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  10, 0, 0, 0),
+                              child: Text(
+                                '$numOwners usuarios',
+                                style: TextStyle(
+                                  fontFamily: 'REM',
+                                  color: Colors.black,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Align(
+                            alignment: AlignmentDirectional(0, 0),
+                            child: Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(0, 0, 8, 0),
+                              child: Text(
+                                houses[i]["address"].toString(),
+                                textAlign: TextAlign.center,
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.w400,
+                                  color: Color(0xFFF57636C),
+                                  fontFamily: 'REM',
+                                  fontSize: 11,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),

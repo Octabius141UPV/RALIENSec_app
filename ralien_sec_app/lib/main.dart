@@ -11,7 +11,7 @@ import "package:ralien_sec_app/components/houseContainer.dart";
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-String token = "39fecf68-8bbe-457e-907a-3f116fb6b4f0";
+String token = "a202a213-c093-41d5-bf4e-6e94767c4ec5";
 
 const String apiUrl = "https://ralien-django-backend-2phw75janq-no.a.run.app/";
 
@@ -19,7 +19,7 @@ String getApiUrl() {
   return apiUrl;
 }
 
-List<String> jsonHouses = [];
+List<dynamic> jsonHouses = [];
 
 Future<void> callToAPI() async {
   final response = await http
@@ -37,29 +37,12 @@ Future<void> callToAPI() async {
   }
 }
 
-List<String> getJsonHouses() {
+List<dynamic> getJsonHouses() {
   return jsonHouses;
 }
 
 void main() async {
-  /* List<String> imgOwners = [];
-  
-
-  //Extraer imagenes de los usuarios de una casa
-
-  for (int i = 0; i < houses.length; i++) {
-    for (int j = 0; j < houses[i]["userprofiles"].length; j++) {
-      /* jsonHouses[i]["userprofiles"][j]["profile_image"] */
-      imgOwners.add(houses[i]["userprofiles"][j]["profile_image"]);
-    }
-  }
-
-  for (int i = 0; imgOwners.length > i; i++) {
-    imgOwnersList.add(Text(imgOwners[i]));
-  }
-
-  print(imgOwnersList); */
-  /* runApp(MyApp()); */
+  runApp(MyApp());
 }
 
 class MyApp extends StatefulWidget {
