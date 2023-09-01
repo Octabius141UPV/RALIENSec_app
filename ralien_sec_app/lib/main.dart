@@ -11,7 +11,7 @@ import "package:ralien_sec_app/components/houseContainer.dart";
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-String token = "a202a213-c093-41d5-bf4e-6e94767c4ec5";
+String token = "e981f9c3-8341-4a24-a3dc-a5665cd19bca";
 
 const String apiUrl = "https://ralien-django-backend-2phw75janq-no.a.run.app/";
 
