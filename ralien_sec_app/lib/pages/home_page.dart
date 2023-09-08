@@ -166,9 +166,9 @@ class _HomePageState extends State<HomePage> {
                           const EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                       child: Container(
                         width: double.infinity,
-                        height: MediaQuery.sizeOf(context).height * 0.9,
+                        height: MediaQuery.sizeOf(context).height * 1,
                         decoration: const BoxDecoration(
-                          color: Color.fromRGBO(255, 255, 255, 1),
+                          color: Color(0xFFFFFFFF),
                           boxShadow: [
                             BoxShadow(
                               blurRadius: 6,
@@ -189,7 +189,7 @@ class _HomePageState extends State<HomePage> {
                             height: double.infinity,
                             width: double.infinity,
                             decoration: const BoxDecoration(
-                              color: Color.fromARGB(255, 255, 255, 255),
+                              color: Color(0xFFFFFFFF),
                             ),
                             alignment: const AlignmentDirectional(0, -1),
                             child: SingleChildScrollView(
